@@ -110,6 +110,19 @@ body {
   color: var(--header-text-color);
   padding-top: 32px;
   padding-bottom: 32px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.header-link.current::after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background: #2196f3;
+  border-radius: 2px;
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
 }
 .header-link:hover,
 .header-link:focus {
@@ -135,6 +148,7 @@ body {
   color: var(--main-text-color);
   display: flex;
   align-items: center;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header-icon {
   margin-right: 10px;
@@ -239,9 +253,26 @@ body {
 .work-item {
   align-items: center;
   margin-right: 30px;
+  position: relative;
 }
 .work-item:last-child {
   margin-right: 0;
+}
+.work-text {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 70px;
+  padding-top: 27px;
+  background-color: rgba(47, 48, 58, 0.8);
+  width: 100%;
 }
 
 /*--------TEAM----------------*/
@@ -303,9 +334,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .team-social-link-icon {
   fill: #afb1b8;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .team-social-link:hover .team-social-link-icon,
 .team-social-list:focus .team-social-link-icon {
@@ -346,6 +380,8 @@ body {
   border: 1px solid #afb1b8;
   box-sizing: border-box;
   border-radius: 4px;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-compani + .client-compani {
@@ -453,6 +489,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .join-social-link-icon {
   fill: var(--second-text-color);
@@ -492,6 +530,9 @@ body {
   text-align: center;
   letter-spacing: 0.03em;
   color: var(--second-title-color);
+  transition: backgraund-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /*--------IMAGES----------------*/
@@ -505,20 +546,44 @@ body {
   max-width: 100%;
   height: auto;
 }
+.images-card-thumb {
+  position: relative;
+  overflow: hidden;
+}
 .images-item {
   flex-basis: calc(100% / 3 - 30px);
   margin-left: 30px;
   margin-top: 30px;
 }
+.images-item:hover .images-item-progect-text {
+  transform: translateY(0);
+}
 .images-item-progect {
   display: block;
   color: #212121;
   text-decoration: none;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .images-item-progect:hover,
 .images-item-progect:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+.images-item-progect-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(33, 150, 243, 0.9);
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  overflow: auto;
+  height: 100%;
+  padding: 63px 24px;
+  transform: translateY(100%);
+  transition: transform 250ms linear;
 }
 .images-contents {
   padding: 20px 24px;
@@ -540,4 +605,49 @@ body {
   line-height: 1.87;
   letter-spacing: 0.03em;
   color: var(--main-text-color);
+}
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  transition: opacity 500ms, visibility 500ms;
+}
+.backdrop.is-hidden .modal {
+  transform: scale(2.5) translate(500px);
+  transition: transform 500ms;
+}
+.modal {
+  width: 528px;
+  min-height: 581px;
+  background: #ffffff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(1);
+  transform: translate(-50%, -50%);
+  transition: transform 500ms;
+}
+.modal-close {
+  width: 30px;
+  height: 30px;
+  border-color: transparent;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
