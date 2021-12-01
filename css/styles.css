@@ -148,7 +148,7 @@ body {
   color: var(--main-text-color);
   display: flex;
   align-items: center;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header-icon {
   margin-right: 10px;
@@ -262,7 +262,6 @@ body {
   font-weight: 700;
   font-size: 14px;
   line-height: 16px;
-  text-align: center;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #ffffff;
@@ -270,7 +269,9 @@ body {
   bottom: 0;
   left: 0;
   height: 70px;
-  padding-top: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgba(47, 48, 58, 0.8);
   width: 100%;
 }
@@ -293,7 +294,6 @@ body {
 }
 .team-item {
   background: #ffffff;
-
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
@@ -342,7 +342,7 @@ body {
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .team-social-link:hover .team-social-link-icon,
-.team-social-list:focus .team-social-link-icon {
+.team-social-link:focus .team-social-link-icon {
   fill: var(--second-text-color);
 }
 .team-social-link:hover,
@@ -380,8 +380,7 @@ body {
   border: 1px solid #afb1b8;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-compani + .client-compani {
@@ -392,6 +391,7 @@ body {
   width: 106px;
   height: 60px;
   fill: #afb1b8;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .client-compani-contact:hover .client-compani-icon,
 .client-compani-contact:focus .client-compani-icon {
@@ -530,7 +530,7 @@ body {
   text-align: center;
   letter-spacing: 0.03em;
   color: var(--second-title-color);
-  transition: backgraund-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -546,18 +546,16 @@ body {
   max-width: 100%;
   height: auto;
 }
-.images-card-thumb {
-  position: relative;
-  overflow: hidden;
-}
 .images-item {
   flex-basis: calc(100% / 3 - 30px);
   margin-left: 30px;
   margin-top: 30px;
 }
-.images-item:hover .images-item-progect-text {
+.images-item:hover .images-item-progect-text,
+.images-item:focus .images-item-progect-text {
   transform: translateY(0);
 }
+
 .images-item-progect {
   display: block;
   color: #212121;
@@ -569,6 +567,11 @@ body {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+.images-card-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
 .images-item-progect-text {
   position: absolute;
   top: 0;
@@ -583,7 +586,7 @@ body {
   height: 100%;
   padding: 63px 24px;
   transform: translateY(100%);
-  transition: transform 250ms linear;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .images-contents {
   padding: 20px 24px;
@@ -612,11 +615,12 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
-  transition: opacity 500ms, visibility 500ms;
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .backdrop.is-hidden .modal {
   transform: scale(2.5) translate(500px);
-  transition: transform 500ms;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal {
   width: 528px;
@@ -630,7 +634,7 @@ body {
   left: 50%;
   transform: scale(1);
   transform: translate(-50%, -50%);
-  transition: transform 500ms;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-close {
   width: 30px;
@@ -645,6 +649,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .is-hidden {
   visibility: hidden;
